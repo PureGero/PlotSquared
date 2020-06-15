@@ -193,7 +193,7 @@ public class Visit extends Command {
             case 1:
                 final String[] finalArgs = args;
                 int finalPage = page;
-                if (args[0].length() >= 2 && !args[0].contains(";") && !args[0].contains(",")) {
+                if (args[0].length() >= 2 && !args[0].contains(";") && !args[0].contains(",") && (!MathMan.isInteger(args[0]) || page != Integer.MIN_VALUE)) {
                     PlotSquared.get().getImpromptuUUIDPipeline().getSingle(args[0], (uuid, throwable) -> {
                         if (throwable instanceof TimeoutException) {
                             // The request timed out
