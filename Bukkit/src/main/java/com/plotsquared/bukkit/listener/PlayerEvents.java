@@ -649,6 +649,13 @@ public class PlayerEvents extends PlotListener implements Listener {
     public void onConnect(PlayerJoinEvent event) {
         final Player player = event.getPlayer();
         BukkitUtil.removePlayer(player.getName());
+
+        BukkitPlayer plotPlayer = BukkitUtil.getPlayer(player);
+
+        if (plotPlayer.getPlatformPlayer() != Bukkit.getPlayer(plotPlayer.getUUID())) {
+            plotPlayer.unregister();
+        }
+
         final PlotPlayer pp = BukkitUtil.getPlayer(player);
 
         Location location = pp.getLocation();
